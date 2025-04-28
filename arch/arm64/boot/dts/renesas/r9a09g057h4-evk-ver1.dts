@@ -626,7 +626,7 @@
 
 	ov5647_csi20: ov5647_csi20@36 {
 		compatible = "ovti,ov5647";
-		reg = <0x3c>;
+		reg = <0x36>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
 		clock-frequency = <25000000>;
@@ -655,7 +655,7 @@
 
 	ov5647_csi21: ov5647_csi21@36 {
 		compatible = "ovti,ov5647";
-		reg = <0x3c>;
+		reg = <0x36>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
 		clock-frequency = <25000000>;
@@ -756,7 +756,7 @@
 
 	ov5647_csi22: ov5647_csi22@36 {
 		compatible = "ovti,ov5647";
-		reg = <0x3c>;
+		reg = <0x36>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
 		clock-frequency = <25000000>;
@@ -784,7 +784,7 @@
 
 	ov5647_csi23: ov5647_csi23@36 {
 		compatible = "ovti,ov5647";
-		reg = <0x3c>;
+		reg = <0x36>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
 		clock-frequency = <25000000>;
