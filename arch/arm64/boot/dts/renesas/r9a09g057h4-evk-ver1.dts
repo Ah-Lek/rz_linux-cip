@@ -238,28 +238,28 @@
 	clk_ext_camera: clk_ext_camera {
 		compatible = "fixed-clock";
 		#clock-cells = <0>;
-		clock-frequency = <24000000>;
+		clock-frequency = <25000000>;
 	};
 
-	ov5645_vdddo_1v8: 1p8v {
+	ov5647_dovdd_1v8: 1p8v {
 		compatible = "regulator-fixed";
-		regulator-name = "camera_vdddo";
+		regulator-name = "camera_dovdd";
 		regulator-min-microvolt = <1800000>;
 		regulator-max-microvolt = <1800000>;
 		regulator-always-on;
 	};
 
-	ov5645_vdda_2v8: 2p8v {
+	ov5647_avdd_2v8: 2p8v {
 		compatible = "regulator-fixed";
-		regulator-name = "camera_vdda";
+		regulator-name = "camera_avdd";
 		regulator-min-microvolt = <2800000>;
 		regulator-max-microvolt = <2800000>;
 		regulator-always-on;
 	};
 
-	ov5645_vddd_1v5: 1p5v {
+	ov5647_dvdd_1v5: 1p5v {
 		compatible = "regulator-fixed";
-		regulator-name = "camera_vddd";
+		regulator-name = "camera_dvdd";
 		regulator-min-microvolt = <1500000>;
 		regulator-max-microvolt = <1500000>;
 		regulator-always-on;
@@ -268,7 +268,7 @@
 	x1_clk: x1-clock {
 		compatible = "fixed-clock";
 		#clock-cells = <0>;
-		clock-frequency = <24000000>;
+		clock-frequency = <25000000>;
 	};
 
 #if (!SEL_CAN01_HEADER)
@@ -498,7 +498,7 @@
 };
 
 &extal_clk {
-	clock-frequency = <24000000>;
+	clock-frequency = <25000000>;
 };
 
 &ostm2 {
@@ -624,21 +624,21 @@
 
 	status = "okay";
 
-	ov5645_csi20: ov5645_csi20@3c {
-		compatible = "ovti,ov5645";
+	ov5647_csi20: ov5647_csi20@36 {
+		compatible = "ovti,ov5647";
 		reg = <0x3c>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
-		clock-frequency = <24000000>;
-		vdddo-supply = <&ov5645_vdddo_1v8>;
-		vdda-supply = <&ov5645_vdda_2v8>;
-		vddd-supply = <&ov5645_vddd_1v5>;
+		clock-frequency = <25000000>;
+		dovdd-supply = <&ov5647_dovdd_1v8>;
+		avdd-supply = <&ov5647_avdd_2v8>;
+		dvdd-supply = <&ov5647_dvdd_1v5>;
 		/* Set dummy enable gpio */
-		enable-gpios = <&pinctrl RZG2L_GPIO(1, 6) GPIO_ACTIVE_HIGH>;
+		pwdn-gpios = <&pinctrl RZG2L_GPIO(1, 6) GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&pinctrl RZG2L_GPIO(6, 4) GPIO_ACTIVE_LOW>;
 
 		port {
-			ov5645_to_csi20: endpoint {
+			ov5647_to_csi20: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
 				remote-endpoint = <&csi20_in>;
@@ -653,21 +653,21 @@
 
 	status = "okay";
 
-	ov5645_csi21: ov5645_csi21@3c {
-		compatible = "ovti,ov5645";
+	ov5647_csi21: ov5647_csi21@36 {
+		compatible = "ovti,ov5647";
 		reg = <0x3c>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
-		clock-frequency = <24000000>;
-		vdddo-supply = <&ov5645_vdddo_1v8>;
-		vdda-supply = <&ov5645_vdda_2v8>;
-		vddd-supply = <&ov5645_vddd_1v5>;
+		clock-frequency = <25000000>;
+		dovdd-supply = <&ov5647_dovdd_1v8>;
+		avdd-supply = <&ov5647_avdd_2v8>;
+		dvdd-supply = <&ov5647_dvdd_1v5>;
 		/* Set dummy enable gpio */
-		enable-gpios = <&pinctrl RZG2L_GPIO(1, 7) GPIO_ACTIVE_HIGH>;
+		pwdn-gpios = <&pinctrl RZG2L_GPIO(1, 7) GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&pinctrl RZG2L_GPIO(6, 5) GPIO_ACTIVE_LOW>;
 
 		port {
-			ov5645_to_csi21: endpoint {
+			ov5647_to_csi21: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
 				remote-endpoint = <&csi21_in>;
@@ -754,20 +754,20 @@
 
 	status = "okay";
 
-	ov5645_csi22: ov5645_csi22@3c {
-		compatible = "ovti,ov5645";
+	ov5647_csi22: ov5647_csi22@36 {
+		compatible = "ovti,ov5647";
 		reg = <0x3c>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
-		clock-frequency = <24000000>;
-		vdddo-supply = <&ov5645_vdddo_1v8>;
-		vdda-supply = <&ov5645_vdda_2v8>;
-		vddd-supply = <&ov5645_vddd_1v5>;
-		enable-gpios = <&pinctrl RZG2L_GPIO(6, 1) GPIO_ACTIVE_HIGH>;
+		clock-frequency = <25000000>;
+		dovdd-supply = <&ov5647_dovdd_1v8>;
+		avdd-supply = <&ov5647_avdd_2v8>;
+		dvdd-supply = <&ov5647_dvdd_1v5>;
+		pwdn-gpios = <&pinctrl RZG2L_GPIO(6, 1) GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&pinctrl RZG2L_GPIO(9, 2) GPIO_ACTIVE_LOW>;
 
 		port {
-			ov5645_to_csi22: endpoint {
+			ov5647_to_csi22: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
 				remote-endpoint = <&csi22_in>;
@@ -782,20 +782,20 @@
 
 	status = "okay";
 
-	ov5645_csi23: ov5645_csi23@3c {
-		compatible = "ovti,ov5645";
+	ov5647_csi23: ov5647_csi23@36 {
+		compatible = "ovti,ov5647";
 		reg = <0x3c>;
 		clock-names = "xclk";
 		clocks = <&clk_ext_camera>;
-		clock-frequency = <24000000>;
-		vdddo-supply = <&ov5645_vdddo_1v8>;
-		vdda-supply = <&ov5645_vdda_2v8>;
-		vddd-supply = <&ov5645_vddd_1v5>;
-		enable-gpios = <&pinctrl RZG2L_GPIO(6, 0) GPIO_ACTIVE_HIGH>;
+		clock-frequency = <25000000>;
+		dovdd-supply = <&ov5647_dovdd_1v8>;
+		avdd-supply = <&ov5647_avdd_2v8>;
+		dvdd-supply = <&ov5647_dvdd_1v5>;
+		pwdn-gpios = <&pinctrl RZG2L_GPIO(6, 0) GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&pinctrl RZG2L_GPIO(9, 3) GPIO_ACTIVE_LOW>;
 
 		port {
-			ov5645_to_csi23: endpoint {
+			ov5647_to_csi23: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
 				remote-endpoint = <&csi23_in>;
@@ -827,7 +827,7 @@
 				  <&versa3 5>;
 		assigned-clock-rates =  <100000000>, <100000000>,
 					<22579200>, <32768>,
-					<24576000>, <24000000>;
+					<24576000>, <25000000>;
 		clock-divider-read-only = <1>, <1>, <1>, <1>, <1>;
 		clock-flags = <2176>, <2176>, <2176>, <2052>, <2176>, <2048>;
 	};
@@ -862,7 +862,7 @@
 			csi20_in: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
-				remote-endpoint = <&ov5645_to_csi20>;
+				remote-endpoint = <&ov5647_to_csi20>;
 			};
 		};
 	};
@@ -880,7 +880,7 @@
 			csi21_in: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
-				remote-endpoint = <&ov5645_to_csi21>;
+				remote-endpoint = <&ov5647_to_csi21>;
 			};
 		};
 	};
@@ -898,7 +898,7 @@
 			csi22_in: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
-				remote-endpoint = <&ov5645_to_csi22>;
+				remote-endpoint = <&ov5647_to_csi22>;
 			};
 		};
 	};
@@ -916,7 +916,7 @@
 			csi23_in: endpoint {
 				clock-lanes = <0>;
 				data-lanes = <1 2>;
-				remote-endpoint = <&ov5645_to_csi23>;
+				remote-endpoint = <&ov5647_to_csi23>;
 			};
 		};
 	};
